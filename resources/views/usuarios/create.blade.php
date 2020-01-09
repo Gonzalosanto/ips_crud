@@ -43,7 +43,14 @@
                 <input type="Email" name="Email" id="Email" required>
                 <br>
                 <label for="Nacionalidad">Nacionalidad DE USUARIO</label>
-                <input type="text" name="Nacionalidad" id="Nacionalidad" required>
+                <select name="Nacionalidad">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Paraguay">Paraguay</option>
+                  </select>
                 <br>
                 <input type="submit" value="ALTA">
             </form>

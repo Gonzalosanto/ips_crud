@@ -54,7 +54,7 @@
                         <td>{{$usuario->Nacionalidad}}</td>
                         <td>
                             
-                            <a class="btn btn-primary boton" href="{{url('/usuarios/'.$usuario->id.'/edit')}}">EDITAR</a>
+                            <a class="btn btn-primary boton" href="{{url('/usuarios/'.$usuario->id.'/edit')}}" >EDITAR</a>
 
                             
                             <form action="{{ url('/usuarios/'.$usuario->id)}}" method="post">
@@ -63,12 +63,21 @@
                             <button class="btn btn-primary boton" type="submit" onclick="return confirm('Esta seguro de querer borrar el registro.');">BORRAR</button>
                             
                         </form>
+
+                        
                         </td>
                     </tr>
+                    
                 @endforeach    
                 </tbody>
+                
             </table>
-
+            <p>Cantidad de Argentinos: {{ $cantArg  }}</p>
+            <p>Cantidad de Brasileros: {{ $cantBra  }}</p>
+            <p>Cantidad de Chilenos: {{ $cantChi  }}</p>
+            <p>Cantidad de Bolivianos: {{ $cantBol  }}</p>
+            <p>Cantidad de Uruguayos: {{ $cantUru  }}</p>
+            <p>Cantidad de Paraguayos: {{ $cantPar  }}</p>
         </div>
     </body>
 </html>

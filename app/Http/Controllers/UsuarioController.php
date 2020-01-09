@@ -16,9 +16,23 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        $datos['usuarios'] = Usuario::paginate(10);
+        $datos = Usuario::paginate(10);
+
+        $datosNacionalidadArg = Usuario::where('Nacionalidad','=','Argentina')->count();
+        $datosNacionalidadBra = Usuario::where('Nacionalidad','=','Brasil')->count();
+        $datosNacionalidadBol = Usuario::where('Nacionalidad','=','Bolivia')->count();
+        $datosNacionalidadChi = Usuario::where('Nacionalidad','=','Chile')->count();
+        $datosNacionalidadPar = Usuario::where('Nacionalidad','=','Paraguay')->count();
+        $datosNacionalidadUru = Usuario::where('Nacionalidad','=','Uruguay')->count();
        
-        return view('usuarios.index', $datos);
+        return view('usuarios.index')
+        ->with('usuarios', $datos)
+        ->with('cantArg',$datosNacionalidadArg)
+        ->with('cantBra',$datosNacionalidadBra)
+        ->with('cantBol',$datosNacionalidadBol)
+        ->with('cantChi',$datosNacionalidadChi)
+        ->with('cantPar',$datosNacionalidadPar)
+        ->with('cantUru',$datosNacionalidadUru);
     }
 
     /**
