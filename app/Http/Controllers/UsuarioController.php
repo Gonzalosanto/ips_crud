@@ -16,7 +16,9 @@ class UsuarioController extends Controller
     public function index()
     {
         //
-        return view('usuarios.index');
+        $datos['usuarios'] = Usuario::paginate(10);
+       
+        return view('usuarios.index', $datos);
     }
 
     /**
@@ -43,6 +45,8 @@ class UsuarioController extends Controller
 
         
         Usuario::insert($datosUsuario);
+
+        return redirect('usuarios');
         
         
     }
@@ -64,9 +68,12 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit($id)
     {
         //
+        $usuario = Usuario::findOrFail($id);
+
+        return view('usuarios.edit',compact('usuario'));
     }
 
     /**
@@ -76,9 +83,14 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
         //
+        $datosUsuario = request()->except('_token','_method');
+        Usuario::where('id','=',$id)->update($datosUsuario);
+
+        return redirect('usuarios');
+
     }
 
     /**
@@ -87,8 +99,11 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
         //
+        Usuario::destroy($id);
+
+        return redirect('usuarios');
     }
 }
