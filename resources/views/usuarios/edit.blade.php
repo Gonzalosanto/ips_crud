@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap.min.css')}}">
     </head>
     <body>
-        <<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+       <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <a class="navbar-brand">Brand</a>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

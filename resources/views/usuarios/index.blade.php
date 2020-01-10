@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link btn btn-primary" href="{{url('usuarios/create')}}">Formulario de ALTA</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary" href="{{url('usuarios')}}">Listado</a>
+                </li>
                 </ul>
                 
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{url('/busqueda/')}}">
