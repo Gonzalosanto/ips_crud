@@ -13,3 +13,5 @@
 
 
 Route::resource('usuarios', 'UsuarioController');
+
+Route::get('busqueda', 'UsuarioController@search');

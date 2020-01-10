@@ -15,24 +15,29 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
-        $datos = Usuario::paginate(10);
+       
 
-        $datosNacionalidadArg = Usuario::where('Nacionalidad','=','Argentina')->count();
-        $datosNacionalidadBra = Usuario::where('Nacionalidad','=','Brasil')->count();
-        $datosNacionalidadBol = Usuario::where('Nacionalidad','=','Bolivia')->count();
-        $datosNacionalidadChi = Usuario::where('Nacionalidad','=','Chile')->count();
-        $datosNacionalidadPar = Usuario::where('Nacionalidad','=','Paraguay')->count();
-        $datosNacionalidadUru = Usuario::where('Nacionalidad','=','Uruguay')->count();
+        $datos = Usuario::get();
+
+      
        
         return view('usuarios.index')
-        ->with('usuarios', $datos)
-        ->with('cantArg',$datosNacionalidadArg)
-        ->with('cantBra',$datosNacionalidadBra)
-        ->with('cantBol',$datosNacionalidadBol)
-        ->with('cantChi',$datosNacionalidadChi)
-        ->with('cantPar',$datosNacionalidadPar)
-        ->with('cantUru',$datosNacionalidadUru);
+        ->with('usuarios', $datos);
+       
+    }
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        $datos = Usuario::where('Nacionalidad','like',"%$search%")
+        ->orWhere('Nombre','like',"%$search%")
+        ->orWhere('Username','like',"%$search%")
+        ->orWhere('Apellido','like',"%$search%")
+        ->orWhere('Email','like',"%$search%")
+        ->get();
+
+        return view('usuarios.index')->with('usuarios', $datos);
     }
 
     /**
@@ -73,7 +78,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+        
     }
 
     /**
